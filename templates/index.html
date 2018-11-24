@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Hello, world!</h1><br>
+    <h5>Welcome to my Amazon Web Services (AWS) Validation Dashboard</h5>
+    <h5>My assignment includes:</h5>
+    <!-- Update -->
+      <ul>
+        <li style="font-size:20px">Routes - GET (show_vpc_info, show_security_group_info) and POST (create_new_vpc)</li>
+        <li style="font-size:20px">API - <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html'>AWS EC2 API</a></li>
+        <li style="font-size:20px">Styling - <a href='https://getbootstrap.com/docs/4.1/getting-started/introduction/'>Bootstrap</a></li>
+        <li style="font-size:20px">Core topics - dictionaries & **kwargs (describe_vpcs, describe_security_groups, create_vpc), catch 'VpcLimitExceeded' error, WTforms class, and New_vpc_form user input</li>
+        <li style="font-size:20px">Deploy - <a href='https://devcenter.heroku.com/categories/python-support'>Heroku</a></li>
+        
+      </ul>
+    <p><a class="btn btn-primary btn-lg" href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" role="button">Learn more - AWS Python SDK (boto3)</a></p>
+  </div>
+
+
+
+{% endblock %}

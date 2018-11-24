@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>New VPC Info</h1>
+<div class="jumbotron">
+  <div class="container">
+      <form method="POST" action='createvpc'>
+        <div>
+          {{ form.subnet_to_create() }}
+          {{ form.submit() }}
+        </div>    
+      </form>
+  </div>
+</div>
+{% endblock content %}
+
+

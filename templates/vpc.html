@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>VPC Info</h1>
+<div class="jumbotron">
+  <div class="container">    
+      {% for vpc in vpc_info %}
+        {% for k,v in vpc.items() %}
+          <h5><span style="font-weight:bold">{{ k }}</span> : {{ v }}</h5>
+          {% endfor %}
+          <br>
+      {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,86 @@
+URL - https://flask-aws-dashboard-heroku.herokuapp.com/
+
+
+git clone https://github.com/sianliu/ec2_api_heroku.git
+heroku create aws_validation_dashboard_heroku
+https://git.heroku.com/flask-aws-dashboard-heroku.git
+https://12factor.net/config
+https://devcenter.heroku.com/categories/python-support
+
+# https://devcenter.heroku.com/articles/config-vars
+# config vars
+heroku config
+heroku config:set GITHUB_USERNAME=sianliu
+
+# Eg. Accessing config var values from code
+heroku config:set AWS_ACCESS_KEY_ID=xxxx AWS_SECRET_ACCESS_KEY=xxxxxxx
+
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
+# Deploying using Heroku Git
+heroku git https://git.heroku.com/flask-aws-dashboard-heroku.git --app flask-aws-dashboard-heroku
+heroku git:remote flask-aws-dashboard-heroku
+heroku git:remote -a https://git.heroku.com/flask-aws-dashboard-heroku.git
+heroku	https://git.heroku.com/flask-aws-dashboard-heroku.git -a flask-aws-dashboard-heroku
+heroku https://git.heroku.com/flask-aws-dashboard-heroku.git -a flask-aws-dashboard-heroku
+heroku git:remote  https://git.heroku.com/flask-aws-dashboard-heroku.git -a flask-aws-dashboard-heroku
+heroku git:remote  https://git.heroku.com/flask-aws-dashboard-heroku.git -app flask-aws-dashboard-heroku
+set git remote heroku to https://git.heroku.com/flask-aws-dashboard-heroku.git
+heroku git:remote -a flask-aws-dashboard-heroku (skip this step)
+set git remote https://git.heroku.com/flask-aws-dashboard-heroku.git
+Status: successful operation message
+
+git add .
+git commit -am "make it better"
+git push heroku master
+
+# Error (see build log Heroku dashboard)
+To https://git.heroku.com/flask-aws-dashboard-heroku.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/flask-aws-dashboard-heroku.git'
+
+MB-SIAN:api sianliu$ git remote -v
+heroku	https://git.heroku.com/flask-aws-dashboard-heroku.git (fetch)
+heroku	https://git.heroku.com/flask-aws-dashboard-heroku.git (push)
+
+# https://stackoverflow.com/questions/18406721/heroku-does-not-appear-to-be-a-git-repository
+https://powerful-beyond-14395.herokuapp.com/ | https://git.heroku.com/powerful-beyond-14395.git
+
+Matched file names on heroku project and python file - flask-aws-dashboard-heroku.py
+Added buildpack - heroku/python
+
+# Stop here - status: successful looks that way - but site still shows landing page 
+git checkout -b tempbranch
+git push heroku tempbranch
+
+MB-SIAN:api sianliu$ git push heroku tempbranch
+Enumerating objects: 46, done.
+Counting objects: 100% (46/46), done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (44/44), done.
+Writing objects: 100% (46/46), 551.07 KiB | 3.94 MiB/s, done.
+Total 46 (delta 8), reused 0 (delta 0)
+remote: Pushed to non-master branch, skipping build.
+To https://git.heroku.com/flask-aws-dashboard-heroku.git
+ * [new branch]      tempbranch -> tempbranch
+
+
+# Setup git
+git config --global user.name "Jonathan Liu"
+git config --global user.email jonathanfromsg@gmail.com
+core.editor=subl -n -w
+git config --list
+https://git-scm.com/videos
+
+# Trying another approach via github 
+# https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app
+git clone https://github.com/sianliu/flask_aws_dashboard
+https://safe-wave-33422.herokuapp.com/ | https://git.heroku.com/safe-wave-33422.git
+	Status: same error: ! [remote rejected] master -> master (pre-receive hook declined)
+	error: failed to push some refs to 'https://git.heroku.com/safe-wave-33422.git'
+
+
+
+
+

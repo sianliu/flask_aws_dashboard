@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+
+    <link rel='shortcut icon' type=text/css href="{{ url_for('static', filename='favicon.ico') }}">
+
+    {% if title %}
+      <title>GA AWS Dashboard - {{ title }}</title>
+    {% else %}
+      <title>GA AWS Dashboard</title>
+    {% endif %}
+
+    <header>
+    	<div class='container'>
+  			<div class='navbar-header'>
+		  		<a class="navbar-brand" id="logo" href="/" title="ga+aws">
+		        	<img style='max-width:220px; margin-top:-7px' src="{{ url_for('static', filename='ga_aws_logo.jpg') }}">
+		    	</a>	
+		    	
+		    	<a href="vpc" class="btn btn-primary btn-small active" role="button" aria-pressed="true">show VPC</a>
+				<a href="securitygroup" class="btn btn-primary btn-small active" role="button" aria-pressed="true">show security groups</a>
+				<a href="createvpc" class="btn btn-primary btn-small active" role="button" aria-pressed="true">create VPC</a>    
+    		</div>
+   		</div>
+    </header>
+  </head>
+
+  <body>
+  	<div class='container'>
+  	{% with messages = get_flashed_messages(with_categories=true) %}
+		  {% if messages %}
+		    <ul class=flashes>
+			    <div class="alert alert-success" role="alert">
+					{% for category, message in messages %}
+			      		<li class="{{ category }}">{{ message }}</li>
+			    	{% endfor %}
+				</div>		   
+		    </ul>
+		  {% endif %}
+		{% endwith %}
+		{% block content %}{% endblock %}
+ 	</div>
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

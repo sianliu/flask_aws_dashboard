@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Security Group Info</h1>
+<div class="jumbotron">
+  <div class="container">   
+      {% for sg in sg_info %}
+        {% for k,v in sg.items() %}
+          <h5><span style="font-weight:bold">{{ k }}</span> : {{ v }}</h5>
+          {% endfor %}
+          <br>
+      {% endfor %}
+  </div>
+</div>
+ 
+{% endblock %}
