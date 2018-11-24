@@ -80,7 +80,20 @@ https://safe-wave-33422.herokuapp.com/ | https://git.heroku.com/safe-wave-33422.
 	Status: same error: ! [remote rejected] master -> master (pre-receive hook declined)
 	error: failed to push some refs to 'https://git.heroku.com/safe-wave-33422.git'
 
+# Remove .git and reinitialize
+https://aqueous-earth-13521.herokuapp.com/ | https://git.heroku.com/aqueous-earth-13521.git
+Status: same error
 
+# Try disconnecting VPN 
+Status: Same error 
+
+# Try creating staging pipelines before pushing to production
+flask-aws-heroku-staging
+flask-aws-heroku-prod
+
+# Try using another buildpack
+# https://stackoverflow.com/questions/52825799/heroku-deploy-error-no-matching-distribution-found-for-anaconda-client-1-6-14
+https://github.com/heroku-examples/python-miniconda.git
 
 
 
