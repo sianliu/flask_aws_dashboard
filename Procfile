@@ -1,1 +1,1 @@
-web: python flask-aws-dashboard-heroku.py
+worker: python flask-aws-dashboard-heroku.py
