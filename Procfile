@@ -1,1 +1,1 @@
-web: gunicorn --bind localhost:8000 flask-aws-dashboard-heroku:app --preload
+web: gunicorn --bind 0.0.0.0:$PORT flask-aws-dashboard-heroku:app 
