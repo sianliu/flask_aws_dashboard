@@ -1,1 +1,1 @@
-web: gunicorn app:flask-aws-dashboard-heroku
+web: gunicorn deploy:app
