@@ -1,1 +1,1 @@
-worker: python flask-aws-dashboard-heroku.py
+web: gunicorn --chdir api flask-aws-dashboard-heroku:app
