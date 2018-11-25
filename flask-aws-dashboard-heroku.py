@@ -13,8 +13,6 @@ import os
 
 app = Flask(__name__)
 # Required to use CSFR for create_vpc
-# store in env var!
-# config vars
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 '''
@@ -40,7 +38,7 @@ The method client.describe_vpcs(**kwargs) describes one or more of your VPCs
 def show_vpc_info():
     vpc_info = []           # to pass into render template
     # do we need this statement?
-    ec2 = boto3.resource('ec2', region_name='ap-southeast-1')
+    ec2 = boto3.resource('ec2', region_name=os.environ.get('AWS_EC2_REGION'))
     client = boto3.client('ec2')
     # returns dictionary containing vpcs
     temp_vpc_info = client.describe_vpcs()
