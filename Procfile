@@ -1,1 +1,1 @@
-web: gunicorn deploy:app
+web: python flask-aws-dashboard-heroku.py
