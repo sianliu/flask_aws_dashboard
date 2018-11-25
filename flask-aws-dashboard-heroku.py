@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 '''
-Renders the Home page 
+Renders the Home page
 '''
 
 
@@ -27,7 +27,7 @@ def index():
 
 '''
 The show_vpc_info route displays a list of your configured of Amazon Virtual Private Clouds (VPC)
-vpc_info holds the list of VPCs to render 
+vpc_info holds the list of VPCs to render
 boto3.resource is a resource representing Amazon Elastic Compute Cloud (EC2)
 boto3.client is a low-level client representing Amazon Elastic Compute Cloud (EC2)
 The method client.describe_vpcs(**kwargs) describes one or more of your VPCs
@@ -38,8 +38,8 @@ The method client.describe_vpcs(**kwargs) describes one or more of your VPCs
 def show_vpc_info():
     vpc_info = []           # to pass into render template
     # do we need this statement?
-    ec2 = boto3.resource('ec2', region_name=os.environ.get('AWS_EC2_REGION'))
-    client = boto3.client('ec2')
+    ec2 = boto3.resource('ec2', os.environ.get('AWS_EC2_REGION'))
+    client = boto3.client('ec2', os.environ.get('AWS_EC2_REGION'))
     # returns dictionary containing vpcs
     temp_vpc_info = client.describe_vpcs()
     # parse json file and add information to vpc_info list
@@ -61,8 +61,8 @@ The method client.describe_security_groups(**kwargs) describes one or more of yo
 @app.route('/securitygroup', methods=['GET'])
 def show_security_group_info():
     sg_info = []
-    ec2 = boto3.resource('ec2', region_name='ap-southeast-1')
-    client = boto3.client('ec2')
+    ec2 = boto3.resource('ec2', os.environ.get('AWS_EC2_REGION'))
+    client = boto3.client('ec2', os.environ.get('AWS_EC2_REGION'))
     # returns dictionary containing security groups
     sg_info = client.describe_security_groups()
     # parse json file and add information to sg_info list
