@@ -9,12 +9,13 @@ from flask import Flask, render_template, url_for, request, redirect, flash
 from forms import New_vpc_form
 from botocore.exceptions import ClientError
 import boto3
+import os
 
 app = Flask(__name__)
 # Required to use CSFR for create_vpc
-# store in env var! 
+# store in env var!
 # config vars
-app.config['SECRET_KEY'] = "><\xe0H\x8d\xf1q\xcdr\xef\x83\x14\x91\xa7\td\xee\xec&>HQX\xcd"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 '''
 Renders the Home page 
