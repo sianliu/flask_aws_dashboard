@@ -80,7 +80,7 @@ client.create_vpc(**kwargs) creates a VPC with the specified IPv4 CIDR block
 
 @app.route('/createvpc', methods=['GET', 'POST'])
 def create_new_vpc():
-    client = boto3.client('ec2')
+    client = boto3.client('ec2', os.environ.get('AWS_EC2_REGION'))
     form = New_vpc_form()
     CidrBlock = form.subnet_to_create.data or '10.0.0.0/16'
     try:
