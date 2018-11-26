@@ -13,7 +13,8 @@ import os
 
 app = Flask(__name__)
 # Required to use CSFR for create_vpc
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+# app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = 'test'
 
 '''
 Renders the Home page
@@ -82,19 +83,20 @@ client.create_vpc(**kwargs) creates a VPC with the specified IPv4 CIDR block
 def create_new_vpc():
     client = boto3.client('ec2', os.environ.get('AWS_EC2_REGION'))
     form = New_vpc_form()
-    CidrBlock = form.subnet_to_create.data or '10.0.0.0/16'
-    try:
-        # returns dictionary containing new vpc created
-        new_vpc = client.create_vpc(CidrBlock=CidrBlock)
-        flash(u'The VPC was created', 'error')
-        return render_template('createvpc.html', new_vpc=new_vpc, form=form, title='Create New VPC')
-    except ClientError as e:
-        if e.response['Error']['Code'] == 'VpcLimitExceeded':
-            flash('Maximum VPCs reached. Ask Jonathan to delete one.')
-        else:
-            raise e
-    return redirect(url_for('index'))
+    CidrBlock = form.subnet_to_create.data
+    # CidrBlock = form.subnet_to_create.data or '10.0.0.0/16'
+    if CidrBlock:
+        try:
+            new_vpc = client.create_vpc(CidrBlock=CidrBlock)
+            flash(u'The VPC was created', 'error')
+            return redirect(url_for('create_new_vpc'))
+        except ClientError as e:
+            if e.response['Error']['Code'] == 'VpcLimitExceeded' or 'TypeError':
+                flash('Maximum VPCs reached. Ask Jonathan to delete one.')
+            else:
+                raise e
+    return render_template('createvpc.html', form=form)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
