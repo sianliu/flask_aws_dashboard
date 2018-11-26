@@ -1,8 +1,13 @@
-'''
-GA Capstone Final Project: Python Flask Bootstrap Boto3 AWS Validation Dashboard that uses:
-    Front-end: Flask and Bootstrap
-    Back-end: Python Boto3
-'''
+#! /usr/bin/env python
+
+"""
+Amazon AWS Daashboard to validate VPC and security group configuration created using Boto3, Python, and Flask.     
+
+https://flask-aws-dashboard-heroku.herokuapp.com/
+"""
+__author__ = "Jonathan Liu"
+__author_email__ = "mr@sianliu.com"
+__license__ = "GNU GPLv3"
 
 
 from flask import Flask, render_template, url_for, request, redirect, flash
@@ -13,8 +18,7 @@ import os
 
 app = Flask(__name__)
 # Required to use CSFR for create_vpc
-# app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-app.config['SECRET_KEY'] = 'test'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 '''
 Renders the Home page
@@ -37,8 +41,7 @@ The method client.describe_vpcs(**kwargs) describes one or more of your VPCs
 
 @app.route('/vpc', methods=['GET'])
 def show_vpc_info():
-    vpc_info = []           # to pass into render template
-    # do we need this statement?
+    vpc_info = []
     ec2 = boto3.resource('ec2', os.environ.get('AWS_EC2_REGION'))
     client = boto3.client('ec2', os.environ.get('AWS_EC2_REGION'))
     # returns dictionary containing vpcs
@@ -84,7 +87,6 @@ def create_new_vpc():
     client = boto3.client('ec2', os.environ.get('AWS_EC2_REGION'))
     form = New_vpc_form()
     CidrBlock = form.subnet_to_create.data
-    # CidrBlock = form.subnet_to_create.data or '10.0.0.0/16'
     if CidrBlock:
         try:
             new_vpc = client.create_vpc(CidrBlock=CidrBlock)
