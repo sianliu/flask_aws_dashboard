@@ -1,7 +1,10 @@
 #! /usr/bin/env python
 
 """
-Amazon AWS Daashboard to validate VPC and security group configuration created using Boto3, Python, and Flask.     
+
+Github: Python Flask Bootstrap Boto3 AWS Validation Dashboard
+
+Amazon AWS Dashboard to validate VPC and security group configuration created using Boto3, EC2 API, Python, and Flask.     
 
 https://flask-aws-dashboard-heroku.herokuapp.com/
 """
@@ -17,7 +20,7 @@ import boto3
 import os
 
 app = Flask(__name__)
-# Required to use CSFR for create_vpc
+# Required for form validation using CSFR
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 '''
